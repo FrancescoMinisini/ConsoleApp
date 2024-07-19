@@ -44,7 +44,7 @@ internal class Program
             {
                 case 1:
                     {
-                        //per visualizzare i contatti
+                        //per visualizzare contatti
                         Console.Clear();
                         foreach (string field in list) Console.WriteLine($"{field}       ");
                         foreach (Contatto field in rubrica.elenco)
