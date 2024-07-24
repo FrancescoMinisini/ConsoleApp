@@ -20,6 +20,7 @@ List<Contatto> contatti = new List<Contatto>
             };
 elenco.AddRange(contatti);
 rubrica.elenco = elenco;
+
  
 
 Dictionary<int, string> azioni   = new Dictionary<int, string>()
