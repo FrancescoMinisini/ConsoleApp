@@ -7,69 +7,35 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp2.Classi
 {
-    internal class Contatto
+    internal class Contatto : Persona
     {
-        private string name ;
-        private string surname;
-        private string number;
-        private string email;
-
-        public string Name { get; set; } = string.Empty;
-
-        public string Surname { get; set; } = string.Empty;
-
         public string Number { get; set; } = string.Empty;
 
         public string Email { get; set; } = string.Empty;
 
-        public Contatto( string cognome, string nome , string numero, string mail)
-        {
-            Name = nome;
-            Surname = cognome;
-            Number = numero;
-            Email = mail;
-        }
         public Contatto()
         {
         }
+        public Contatto(string surname, string name, string numero, string mail) : base(surname, name)
+        {
+            Number = numero;
+            Email = mail;
+        }
 
+        public Contatto(string nome, string cognome, string numero, string mail, string professione, string dataDiNascita, string cf) : base(nome, cognome, professione, dataDiNascita, cf)
+        {
+            this.Number = numero;
+            this.Email = mail;
+        }
+
+        public override void GetInfo()
+        {
+            base.GetInfo();
+            Console.WriteLine($"Numero: {this.Number}");
+            Console.WriteLine($"Mail: {this.Email}");
+        }
     }
-
-    internal class Rubrica
-    {
-        public List<Contatto> elenco; 
-
-        public void Add( Contatto nuovo){
-           this.elenco.Add(nuovo);
-            OrdinaLista();
-            }
-        public void Add(List<Contatto> nuovo)
-        {
-            this.elenco.AddRange(nuovo);
-            OrdinaLista();
-        }
-
-        public void Delete()
-        {
-            this.elenco.Clear();
-        }
-
-        public void OrdinaLista()
-        {
-            this.elenco = this.elenco.OrderBy(x=> x.Surname).ThenBy(x=> x.Name).ToList();   
-        }
-
-        public Rubrica(List<Contatto> contatti)
-        {
-            this.elenco = contatti;
-        }
-
-        public Rubrica()
-        {
-            this.elenco = new List<Contatto>();
-        }
-
-    }
-
 }
+
+
 
